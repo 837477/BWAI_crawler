@@ -36,6 +36,7 @@ def run_ilbe():
             # 타깃 접속!
             target = request_crawler(url)
             page = target.getPage()
+            #time.sleep(2)
             
             
             # 제목 크롤
@@ -43,7 +44,8 @@ def run_ilbe():
             document['title'] = title
             FILE.write("URL: " + url + "\n")
             FILE.write("제목: " + title + "\n")
-            
+            print("URL: " + url)
+            print("제목: " + title)
 
             # 본문 크롤
             document['post'] = []
@@ -63,6 +65,8 @@ def run_ilbe():
 
             FILE.write("본문: " + document['join_post'] + "\n")
             FILE.write("===================================================\n")
+            print("본문: " + document['join_post'])
+            print("===================================================")
 
             BWAI__posts(target.getDB()).insert__one(document)
 
