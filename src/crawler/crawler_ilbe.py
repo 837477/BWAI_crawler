@@ -25,7 +25,6 @@ def run_ilbe():
             target_list = page.find("div", {"class": "board-list"}).find("ul").findAll("a", {"class": "subject", "style": None})
             Flag = ilbe_crawler.makePagelist(target_list, 2000000)
             ilbe_crawler.changePage(1)
-            break
         
         for url in ilbe_crawler.url_list:
             document = {}
@@ -44,8 +43,8 @@ def run_ilbe():
             document['title'] = title
             FILE.write("URL: " + url + "\n")
             FILE.write("제목: " + title + "\n")
-            print("URL: " + url)
-            print("제목: " + title)
+            # print("URL: " + url)
+            # print("제목: " + title)
 
             # 본문 크롤
             document['post'] = []
@@ -65,8 +64,8 @@ def run_ilbe():
 
             FILE.write("본문: " + document['join_post'] + "\n")
             FILE.write("===================================================\n")
-            print("본문: " + document['join_post'])
-            print("===================================================")
+            # print("본문: " + document['join_post'])
+            # print("===================================================")
 
             BWAI__posts(target.getDB()).insert__one(document)
 
