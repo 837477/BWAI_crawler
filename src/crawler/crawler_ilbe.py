@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 from crawler.crawler import request_crawler
 from etc.variable import url_list
-from model.BWAI_model import BWAI__posts
+from model.BWAI_model import BWAI__posts, BWAI__variable
 
 def run_ilbe():
     FILE = open('crawler_result.txt', 'w')
@@ -21,10 +21,10 @@ def run_ilbe():
         Flag = True
         while Flag:
             page = ilbe_crawler.getPage()
-            time.sleep(1)
             target_list = page.find("div", {"class": "board-list"}).find("ul").findAll("a", {"class": "subject", "style": None})
             Flag = ilbe_crawler.makePagelist(target_list, 2000000)
             ilbe_crawler.changePage(1)
+            BWAI__variable(ilbe_crawler.getDB()).update__variable(len(ilbe_crawler.url_list))
         
         for url in ilbe_crawler.url_list:
             document = {}
@@ -35,7 +35,7 @@ def run_ilbe():
             # 타깃 접속!
             target = request_crawler(url)
             page = target.getPage()
-            #time.sleep(2)
+            time.sleep(2)
             
             
             # 제목 크롤
