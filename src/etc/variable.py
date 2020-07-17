@@ -6,5 +6,9 @@ url_list = [
     {
         "title": "ilbe_politics",
         "url": "https://www.ilbe.com/list/politics?page="
+    },
+    {
+        "title": "ilbe_politics",
+        "url": "https://www.ilbe.com/list/celeb?page="
     }
 ]
