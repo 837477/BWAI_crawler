@@ -1,3 +1,4 @@
+import time
 import requests
 from bs4 import BeautifulSoup
 
@@ -6,6 +7,8 @@ from etc.variable import url_list
 from model.BWAI_model import BWAI__posts
 
 def run_ilbe():
+    FILE = open('crawler_result.txt', 'w')
+
     target_url = []
     for url in url_list:
         if url['title'][:4] == "ilbe":
@@ -18,6 +21,7 @@ def run_ilbe():
         Flag = True
         while Flag:
             page = ilbe_crawler.getPage()
+            time.sleep(1)
             target_list = page.find("div", {"class": "board-list"}).find("ul").findAll("a", {"class": "subject", "style": None})
             Flag = ilbe_crawler.makePagelist(target_list, 2000000)
             ilbe_crawler.changePage(1)
@@ -33,11 +37,12 @@ def run_ilbe():
             target = request_crawler(url)
             page = target.getPage()
             
+            
             # 제목 크롤
             title = page.find("div", {"class": "post-wrap"}).find("div", {"class": "post-header"}).find("a").get_text(" ", strip = True)
             document['title'] = title
-            print("URL: " + url)
-            print("제목: " + title)
+            FILE.write("URL: " + url + "\n")
+            FILE.write("제목: " + title + "\n")
             
 
             # 본문 크롤
@@ -56,7 +61,9 @@ def run_ilbe():
 
             document['join_post'] = ' '.join(document['post'])
 
-            print("본문: " + document['join_post'])
-            print("===================================================")
+            FILE.write("본문: " + document['join_post'] + "\n")
+            FILE.write("===================================================\n")
 
             BWAI__posts(target.getDB()).insert__one(document)
+
+    FILE.close()
