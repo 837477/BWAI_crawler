@@ -26,7 +26,7 @@ def run_ilbe():
             if not target_list:
                 break
             
-            for url in target_list
+            for url in target_list:
                 document = {}
 
                 # url 등록
