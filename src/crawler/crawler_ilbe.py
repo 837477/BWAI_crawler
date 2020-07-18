@@ -30,20 +30,18 @@ def run_ilbe():
                 document = {}
 
                 # url 등록
-                document['url'] = url
+                document['url'] = ilbe_crawler.getDomain() + url['href']
 
                 # 타깃 접속!
-                target = request_crawler(url)
+                target = request_crawler(document['url'])
                 page = target.getPage()
-                time.sleep(2)
-                
                 
                 # 제목 크롤
                 title = page.find("div", {"class": "post-wrap"}).find("div", {"class": "post-header"}).find("a").get_text(" ", strip = True)
                 document['title'] = title
-                FILE.write("URL: " + url + "\n")
+                FILE.write("URL: " + document['url'] + "\n")
                 FILE.write("제목: " + title + "\n")
-                print("URL: " + url)
+                print("URL: " + document['url'])
                 print("제목: " + title)
 
                 # 본문 크롤
