@@ -10,5 +10,9 @@ url_list = [
     {
         "title": "ilbe_politics",
         "url": "https://www.ilbe.com/list/celeb?page="
+    },
+    {
+        "title": "dc_baseball",
+        "url": "https://gall.dcinside.com/board/lists/?id=baseball_new9&page="
     }
 ]

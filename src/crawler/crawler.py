@@ -18,9 +18,9 @@ class request_crawler:
         # Crawler
         self.url = url 
         self.domain = self.url.split('/')[0] + '//' + self.url.split('/')[2]
-        self.target = self.url + '1'
+        self.target = self.url + '2'
         self.url_list = []
-        self.page_num = 1
+        self.page_num = 2
         # DB Client    
         self.db_client = MongoClient('mongodb://%s:%s@%s' %(MONGO_ID, MONGO_PW, MONGO_HOST))
         self.db = self.db_client['BWAI']
