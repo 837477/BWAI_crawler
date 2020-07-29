@@ -6,7 +6,7 @@ BWAI Database Controller Framework
 class BWAI__posts(object):
     def __init__(self, client):
         super(BWAI__posts, self).__init__()
-        self.collection = client['posts']
+        self.collection = client['posts2']
 
         #Basic projection
         self.projection_basic = {
