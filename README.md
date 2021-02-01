@@ -25,7 +25,7 @@ pip install -r requirements.txt
 ## Usage example
 
 ```sh
-python3 main.py
+python3 -m main
 ```
 
 
