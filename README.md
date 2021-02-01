@@ -45,7 +45,7 @@ python3 main.py
 
 🐱 Github: https://github.com/837477
 
-📔 Blog: https://837477.github.iohttps://837477.github.io/)
+📔 Blog: https://837477.github.iohttps://837477.github.io/
 
 
 
